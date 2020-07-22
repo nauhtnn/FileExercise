@@ -56,6 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FolderModel.cs" />
+    <Compile Include="FolderModelFactory.cs" />
     <Compile Include="StockIconGetter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

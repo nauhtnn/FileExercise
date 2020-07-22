@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -42,13 +43,11 @@ namespace FileExercise
             //}
         }
 
-        
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private TreeView Fixed10()
         {
             var explorer = new TreeView();
-            
-            for(int i = 0; i < 10; ++i)
+
+            for (int i = 0; i < 10; ++i)
             {
                 var it = new TreeViewItem();
                 var f = new StackPanel();
@@ -72,10 +71,49 @@ namespace FileExercise
                     ite.Header = folder;
                     var padding = new Thickness(12);
                     ite.Padding = padding;
+                    //ite.IsExpanded = true;
                     it.Items.Add(ite);
                 }
+                it.IsExpanded = true;
                 explorer.Items.Add(it);
             }
+            return explorer;
+        }
+
+        private TreeView GenerateTreeView()
+        {
+            FolderModel folderModel = FolderModelFactory.Generate(null, 2, 2, 0, 4);
+            var root = new TreeViewItem();
+            root.Header = folderModel.Name;
+            GenerateTreeViewItem(folderModel, ref root);
+            var explorer = new TreeView();
+            explorer.Items.Add(root);
+            return explorer;
+        }
+
+        private void GenerateTreeViewItem(FolderModel parentFolder, ref TreeViewItem parentView)
+        {
+            foreach (FolderModel childFolder in parentFolder.Children)
+            {
+                var it = new TreeViewItem();
+                var f = new StackPanel();
+                f.Orientation = Orientation.Horizontal;
+                f.Children.Add(StockIconGetter.GetImage());
+                var text = new TextBlock();
+                text.Text = childFolder.Name;
+                f.Children.Add(text);
+                it.Header = f;
+                var pad = new Thickness(4);
+                it.Padding = pad;
+                it.IsExpanded = true;
+                GenerateTreeViewItem(childFolder, ref it);
+                parentView.Items.Add(it);
+            }
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            var explorer = GenerateTreeView();
             canvas.Children.Add(explorer);
         }
     }
