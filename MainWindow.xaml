@@ -5,34 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileExercise"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Loaded="Grid_Loaded">
-        <!--<Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBlock x:Name="output" HorizontalAlignment="Left" Height="274" Margin="172,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515"/>-->
-        <!--<TreeView Name="myTreeViewEvent" >
-            <TreeViewItem Header="Employee1" IsSelected="True">
-                <TreeViewItem Header="Jesper Aaberg"/>
-                <TreeViewItem Header="Employee Number">
-                    <TreeViewItem Header="12345"/>
-                </TreeViewItem>
-                <TreeViewItem Header="Work Days">
-                    <TreeViewItem Header="Monday"/>
-                    <TreeViewItem Header="Tuesday"/>
-                    <TreeViewItem Header="Thursday"/>
-                </TreeViewItem>
-            </TreeViewItem>
-            <TreeViewItem Header="Employee2">
-                <TreeViewItem Header="Dominik Paiha"/>
-                <TreeViewItem Header="Employee Number">
-                    <TreeViewItem Header="98765"/>
-                </TreeViewItem>
-                <TreeViewItem Header="Work Days">
-                    <TreeViewItem Header="Tuesday"/>
-                    <TreeViewItem Header="Wednesday"/>
-                    <TreeViewItem Header="Friday"/>
-                </TreeViewItem>
-            </TreeViewItem>
-        </TreeView>-->
+        WindowState="Maximized"
+        WindowStyle="None"
+        Title="MainWindow" Height="720" Width="1280">
+    <!--<Grid Loaded="Grid_Loaded">
         <StackPanel x:Name="canvas"></StackPanel>
-    </Grid>
+    </Grid>-->
+    <!--:fa="http://schemas.fontawesome.io/icons/"-->
+    <Viewbox Loaded="Grid_Loaded" x:Name="MainApp" VerticalAlignment="Top">
+        <StackPanel Width="1280" Margin="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="ProblemDesc" Background="#1c64e7" Foreground="#fff" FontSize="22"
+                       Height="80" Width="960" Margin="0" Padding="0" TextWrapping="Wrap"/>
+                <!--<fa:ImageAwesome x:Name="SpinningIcon" Icon="Refresh"  Spin="True" Height="64" Width="80" DockPanel.Dock="Left" Visibility="Collapsed"/>-->
+                <Button x:Name="CheckBtn" Content="Kiểm tra" Height="80" Width="160" FontSize="24"
+                Foreground="White" Background="Green" Margin="0" Padding="0"/>
+                <Button x:Name="ExitBtn" Content="Thoát" Height="80" Width="160" FontSize="24"
+                    Foreground="White" Background="OrangeRed" Margin="0" Padding="0"/>
+            </StackPanel>
+            <StackPanel x:Name="canvas"></StackPanel>
+        </StackPanel>
+    </Viewbox>
 </Window>

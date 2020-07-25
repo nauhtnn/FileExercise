@@ -9,7 +9,7 @@ namespace FileExercise
     public class FolderModelFactory
     {
         static Random random = new Random();
-        public static FolderModel Generate(string name, int maxChildren, int minChildren, int level, int maxLevel)
+        public static FolderModel Generate(string name, int minChildren, int maxChildren, int level, int maxLevel)
         {
             FolderModel folder = new FolderModel();
             folder.Name = (name == null) ? GenerateName(8) : name;
@@ -18,7 +18,7 @@ namespace FileExercise
             {
                 while (0 < n)
                 {
-                    folder.Children.Add(Generate(null, maxChildren, minChildren, level + 1, maxLevel));
+                    folder.Children.Add(Generate(null, minChildren, maxChildren, level + 1, maxLevel));
                     --n;
                 }
             }

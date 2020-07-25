@@ -82,7 +82,7 @@ namespace FileExercise
 
         private TreeView GenerateTreeView()
         {
-            FolderModel folderModel = FolderModelFactory.Generate(null, 2, 2, 0, 4);
+            FolderModel folderModel = FolderModelFactory.Generate(null, 0, 4, 0, 4);
             var root = new TreeViewItem();
             root.Header = folderModel.Name;
             GenerateTreeViewItem(folderModel, ref root);
