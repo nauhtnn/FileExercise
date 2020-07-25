@@ -14,11 +14,19 @@ using System.Windows.Shapes;
 
 namespace FileExercise
 {
+    enum FILE_EXERCISE_FMT
+    {
+        PROBLEM_DESC,
+        FOLDER_COUNT
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        Problem problem;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -111,10 +119,23 @@ namespace FileExercise
             }
         }
 
+        private void NextProblem()
+        {
+            problem.Next();
+
+            ProblemDesc.Text = problem.Desc[FILE_EXERCISE_FMT.PROBLEM_DESC.ToString()];
+        }
+
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             var explorer = GenerateTreeView();
             canvas.Children.Add(explorer);
+
+            problem = new Problem("FileExercise");
+            problem.ReadMap();
+            problem.LoadID();
+
+            NextProblem();
         }
     }
 }

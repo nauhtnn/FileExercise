@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="FolderModel.cs" />
     <Compile Include="FolderModelFactory.cs" />
+    <Compile Include="Problem.cs" />
     <Compile Include="StockIconGetter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
